@@ -11,16 +11,18 @@ El flujo de trabajo sigue una arquitectura moderna de medallón (Bronze, Silver,
 
 ```mermaid
 graph TD
-    A[Datos Crudos (Bronze)<br>MovieLens CSVs] --> B{Databricks & Apache Spark<br>(Proceso ETL)};
-    B --> C[Transformación y Limpieza<br>(Silver)];
-    C --> D[Tabla Golden Analítica<br>(Gold - Delta Lake)];
-    D --> E[Visualizaciones & Insights];
+    A[Datos Crudos - Bronze<br/>MovieLens CSVs] --> B{Databricks & Apache Spark<br/> - Proceso ETL}
+    B --> C[Transformación y Limpieza<br/> - Silver]
+    C --> D[Tabla Golden Analítica<br/>Gold - Delta Lake]
+    D --> E[Visualizaciones & Insights]
+
     subgraph Databricks
-        B;
-        C;
-        D;
-        E;
+        B
+        C
+        D
+        E
     end
+
     style A fill:#f9f9f9,stroke:#333,stroke-width:2px
     style D fill:#e6f7ff,stroke:#007bff,stroke-width:2px
 ```
@@ -36,10 +38,6 @@ El repositorio está organizado para promover la modularidad, la reproducibilida
 ├── .gitignore                  # Archivos y directorios ignorados por Git.
 ├── notebooks/
 │   └── databricks_movie_analysis.py # El notebook de Databricks exportado como script Python.
-├── src/
-│   └── futuro_etl_functions.py        # Funciones reutilizables para la lógica ETL.
-├── docs/
-│   └── futuro_architecture_diagram.png # Diagrama de la arquitectura del pipeline.
 └── data/
     ├── raw/                    # Datos originales sin procesar.
     └── processed/              # Datos transformados y listos para análisis (almacenados en Delta Lake).
@@ -108,3 +106,4 @@ Este proyecto no es solo un ETL; es una demostración de principios de ingenier�
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
